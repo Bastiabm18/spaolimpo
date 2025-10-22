@@ -1,0 +1,145 @@
+/* globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Animaciones del Filtro --- */
+
+/* Animación para el grano/estática de fondo */
+@keyframes grain-flicker {
+  0%, 100% { opacity: 0.06; }
+  10% { opacity: 0.1; }
+  20% { opacity: 0.05; }
+  30% { opacity: 0.12; }
+  40% { opacity: 0.07; }
+  50% { opacity: 0.11; }
+  60% { opacity: 0.06; }
+  70% { opacity: 0.08; }
+  80% { opacity: 0.05; }
+  90% { opacity: 0.13; }
+}
+
+/* Animación para las líneas de "daño de cinta" que se desplazan */
+@keyframes tape-damage-scroll {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* Animación para el efecto "glitch" que desplaza las líneas momentáneamente */
+@keyframes glitch-effect {
+  0%, 100% { transform: translate(0, 0); }
+  49.5% { transform: translate(0, 0); }
+  50% { transform: translate(-2px, 5px); }
+  50.5% { transform: translate(0, 0); }
+}
+
+/* MEJORA: Animación para los artefactos de suciedad */
+@keyframes film-dirt-flicker {
+  0%, 100% { opacity: 0; }
+  5% { opacity: 1; transform: translate(2vw, -5vh); }
+  6% { opacity: 0; }
+  20% { opacity: 1; transform: translate(-3vw, 10vh); }
+  22% { opacity: 0; }
+  40% { opacity: 1; transform: translate(5vw, 8vh); }
+  41% { opacity: 0; }
+  65% { opacity: 1; transform: translate(-4vw, -12vh); }
+  67% { opacity: 0; }
+  85% { opacity: 1; transform: translate(2vw, 5vh); }
+  87% { opacity: 0; }
+}
+
+
+/* --- Contenedor Principal del Filtro --- */
+.vx1000-pro-filter {
+  /* No necesita estilos directos, actúa como ancla para los pseudo-elementos */
+}
+
+/* --- Capas del Filtro (Pseudo-elementos) --- */
+
+/* Capa 1 (::before): Viñeta y Tinte de Color */
+.vx1000-pro-filter::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Viñeta más pronunciada para un look más dramático */
+  box-shadow: inset 0 0 12vw 6vw rgba(0, 0, 0, 0.9);
+  /* Tinte azulado/frío característico, clave para el look VX */
+  background-color: rgba(0, 100, 200, 0.1);
+  mix-blend-mode: color-dodge; /* 'color-dodge' crea reflejos y colores más vibrantes */
+}
+
+/* Capa 2 (::after): Grano de Película y Estática */
+.vx1000-pro-filter::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  /* Patrón de ruido generado con SVG para un grano más fino */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="1.5" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.2"/></svg>');
+  /* Animación de parpadeo para el grano */
+  animation: grain-flicker 0.15s infinite;
+}
+
+/* --- Capa de Imperfecciones (Clase para el div hijo) --- */
+
+/* Clase para las líneas de daño de cinta ("gusanos") y glitch */
+.tape-damage-lines {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+  /* Múltiples fondos para crear capas de imperfecciones */
+  background-image:
+    /* 1. "Gusanitos" blancos que se desplazan lentamente */
+    repeating-linear-gradient(to bottom,
+      transparent 0,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 2px,
+      transparent 25%
+    ),
+    /* 2. Líneas de escaneo oscuras y estáticas */
+    repeating-linear-gradient(to bottom,
+      transparent 0,
+      rgba(0, 0, 0, 0.2) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  /* Múltiples animaciones: una para el scroll y otra para el glitch */
+  animation:
+    tape-damage-scroll 20s linear infinite,
+    glitch-effect 2s steps(1) infinite;
+}
+
+/* MEJORA: Capa de artefactos aleatorios (manchas y suciedad) */
+.tape-damage-lines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 4; /* Por encima de las líneas de cinta */
+  background-image:
+    /* Mancha 1 */
+    radial-gradient(circle at 20% 15%, rgba(255,255,255,0.4) 0%, transparent 0.8%),
+    /* Mancha 2 (pequeña) */
+    radial-gradient(circle at 80% 10%, rgba(255,255,255,0.5) 0%, transparent 0.4%),
+    /* Gusanito 1 (elipse) */
+    radial-gradient(ellipse 4% 0.5% at 50% 30%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    /* Mancha 3 */
+    radial-gradient(circle at 90% 45%, rgba(255,255,255,0.3) 0%, transparent 1%),
+    /* Mancha 4 */
+    radial-gradient(circle at 15% 55%, rgba(255,255,255,0.4) 0%, transparent 0.6%),
+    /* Gusanito 2 */
+    radial-gradient(ellipse 0.5% 3% at 35% 70%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    /* Mancha 5 */
+    radial-gradient(circle at 75% 85%, rgba(255,255,255,0.5) 0%, transparent 0.8%),
+    /* Mancha 6 (grande y sutil) */
+    radial-gradient(circle at 55% 95%, rgba(255,255,255,0.2) 0%, transparent 2.5%),
+    /* Mancha 7 */
+    radial-gradient(circle at 5% 80%, rgba(255,255,255,0.4) 0%, transparent 0.5%),
+    /* Mancha 8 */
+    radial-gradient(circle at 95% 5%, rgba(255,255,255,0.3) 0%, transparent 1.2%);
+  background-repeat: no-repeat;
+  /* Animación que hace parpadear los artefactos en diferentes posiciones */
+  animation: film-dirt-flicker 20s linear infinite;
+  mix-blend-mode: screen; /* 'screen' funciona bien para artefactos claros */
+}
