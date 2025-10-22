@@ -147,10 +147,10 @@ export const Navbar: React.FC = () => {
             <nav className="flex flex-col font-alumniSans items-center gap-y-8">
               <Link href="/" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Inicio</Link>
               <Link href="/agenda" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Agenda</Link>
-              <a href="#servicio" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Servicios</a>
-              <a href="#contacto" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Contacto</a>
-              <a href="#nosotros" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Nosotros</a>
-              <a href="#galeria" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Galería</a>
+              <Link href="#servicio" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Servicios</Link>
+              <Link href="#contacto" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Contacto</Link>
+              <Link href="#nosotros" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Nosotros</Link>
+              <Link href="#galeria" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Galería</Link>
               <Link href="/login"   onClick={closeMenu} className ="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors" >Login</Link>
             </nav>
           </motion.div>
