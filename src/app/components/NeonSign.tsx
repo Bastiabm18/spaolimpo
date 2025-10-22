@@ -39,9 +39,9 @@ const NeonSign = () => {
         ease: 'easeInOut',     // Suaviza el cambio entre opacidades
       }}
     >
-      <Link href='/' className="bg-cover bg-clip-text">
+      <p  className="bg-cover bg-clip-text">
         Spa Olimpo
-      </Link>
+      </p>
     </motion.div>
   );
 };
