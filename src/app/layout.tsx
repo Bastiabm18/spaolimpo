@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 
   // 2. Define tu lista de canciones
   const playlist = [
+    'Cris MJ - Apocalipsis (Visualizer)  Apocalipsis - Cris MJ.mp3',
     '/Apollo Brown - Never in a million years - TripHop Beatss.mp3',
     '/Travis Scott - YOSEMITE (INSTRUMENTAL) reprod - Mizzy Mauri the Producer.mp3',
     '/Travis Scott - Sicko Mode (Official Instrumental) - John.mp3',
