@@ -1,6 +1,8 @@
 'use client'; // Necesario para que Framer Motion funcione en Next.js App Router
 
 import { motion } from 'framer-motion';
+import React from 'react';
+import Link from 'next/link';
 
 const NeonSign = () => {
   // --- Estilos para el efecto Neón ---
@@ -37,9 +39,9 @@ const NeonSign = () => {
         ease: 'easeInOut',     // Suaviza el cambio entre opacidades
       }}
     >
-      <a href='/' className="bg-cover bg-clip-text">
+      <Link href='/' className="bg-cover bg-clip-text">
         Spa Olimpo
-      </a>
+      </Link>
     </motion.div>
   );
 };

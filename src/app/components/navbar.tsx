@@ -8,6 +8,7 @@ import { HiOutlineUser, HiOutlineSun, HiOutlineMoon } from 'react-icons/hi2';
 import { MdMenu, MdClose } from 'react-icons/md';
 import { BsMenuButtonWideFill } from "react-icons/bs";
 import NeonSign from './NeonSign';
+import Link from 'next/link';
 
 type LightBulbProps = {
   isOn: boolean;
@@ -144,13 +145,13 @@ export const Navbar: React.FC = () => {
               <MdClose className="h-10 w-10" />
             </button>
             <nav className="flex flex-col font-alumniSans items-center gap-y-8">
-              <a href="/" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Inicio</a>
-              <a href="/agenda" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Agenda</a>
+              <Link href="/" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Inicio</Link>
+              <Link href="/agenda" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Agenda</Link>
               <a href="#servicio" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Servicios</a>
               <a href="#contacto" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Contacto</a>
               <a href="#nosotros" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Nosotros</a>
               <a href="#galeria" onClick={closeMenu} className="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors">Galería</a>
-              <a href="/login"   onClick={closeMenu} className ="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors" >Login</a>
+              <Link href="/login"   onClick={closeMenu} className ="text-3xl  text-stone-100 hover:text-yellow-300 transition-colors" >Login</Link>
             </nav>
           </motion.div>
         )}
